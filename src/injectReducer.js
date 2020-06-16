@@ -71,8 +71,10 @@ const useInjectReducer = ({ key, reducer }) => {
   const isInjected = React.useRef(false);
 
   if (!isInjected.current) {
-    getInjectors(store).injectReducer(key, reducer);
     isInjected.current = true;
+    setTimeout(() => {
+      getInjectors(store).injectReducer(key, reducer);
+    }, 0);
   }
 };
 
